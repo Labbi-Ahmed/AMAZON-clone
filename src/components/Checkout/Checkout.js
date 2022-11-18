@@ -22,28 +22,6 @@ function Checkout() {
               image={item.image}
             />
           ))}
-
-          {/* <CheckoutProduct
-            id="3r4343"
-            title="this is test productthis is test product this is test product this is test product"
-            price={343}
-            rating={5}
-            image="Images/lean_startup.jpg"
-          />
-          <CheckoutProduct
-            id="3r4343"
-            title="this is test productthis is test product this is test product this is test product"
-            price={343}
-            rating={5}
-            image="Images/lean_startup.jpg"
-          />
-          <CheckoutProduct
-            id="3r4343"
-            title="this is test productthis is test product this is test product this is test product"
-            price={343}
-            rating={5}
-            image="Images/lean_startup.jpg"
-          /> */}
         </div>
         {/* BasketItem */}
       </div>
