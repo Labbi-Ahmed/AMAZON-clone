@@ -18,14 +18,14 @@ function Home() {
           {/* product */}
 
           <Product
-            id="11111"
+            id="1"
             title="The lean startup"
             price={29.99}
             rating={5}
             image="Images/lean_startup.jpg"
           />
           <Product
-            id="22222"
+            id="2"
             title="The Road to React: Your journey to master plain yet pragmatic React.js"
             price={29.99}
             rating={5}
@@ -34,14 +34,14 @@ function Home() {
         </div>
         <div className="home__row">
           <Product
-            id="33333"
+            id="3"
             title="Java: Learn Java in One Day and Learn It Well. Java for Beginners with Hands-on Project. (Learn Coding Fast with Hands-On Project)"
             price={11.67}
             rating={5}
             image="Images/product3.jpg"
           />
           <Product
-            id="44444"
+            id="4"
             title="SAMSUNG Galaxy Watch 5 Pro Guide: 45mm Bluetooth Smartwatch w/Body, Health, Fitness and Sleep Tracker,
              Improved Battery, Sapphire Crystal Glass, Enhanced GPS Tracking, US Version, Black"
             price={250.0}
@@ -49,7 +49,7 @@ function Home() {
             image="Images/product4.jpg"
           />
           <Product
-            id="55555"
+            id="5"
             title="NakedShield Samsung Galaxy S5 S 5 (Hunter
                  Camouflage) Total Hard Armor LifeStyle Phone Case"
             price={42.29}
@@ -59,7 +59,7 @@ function Home() {
         </div>
         <div className="home__row">
           <Product
-            id="66666"
+            id="2326"
             title="Echo Dot (3rd Gen) Charcoal with Echo Auto"
             price={54.99}
             rating={5}

@@ -1,16 +1,20 @@
-import { CurrencyBitcoin } from "@mui/icons-material";
-import React from "react";
+import { Balance, CurrencyBitcoin } from "@mui/icons-material";
+import React, { useEffect } from "react";
 import "./Subtotal.css";
 import CurrencyFormat from "react-currency-format";
+import { useStateValue } from "../../StateProvider/StateProvider";
+import { getBasketTotal } from "../../Reducer/Reducer";
 
 function Subtotal() {
+  const [{ basket }, dispatch] = useStateValue();
+
   return (
     <div className="subtotal">
       <CurrencyFormat
         renderText={(value) => (
           <>
             <p>
-              Sbutotal (0 item): <strong>0</strong>
+              Sbutotal ({basket.length} item): <strong>{value}</strong>
             </p>
             <small className="subtotal__gift">
               <input type="checkbox" /> This order contains a gift
@@ -18,7 +22,7 @@ function Subtotal() {
           </>
         )}
         decimalScal={2}
-        value={0}
+        value={getBasketTotal(basket)}
         displayType={"text"}
         thousendSeparator={true}
         prefix={"$"}
