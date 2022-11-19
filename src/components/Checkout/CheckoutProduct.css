@@ -18,6 +18,14 @@
   margin-top: 10px;
   border-color: #a88734 #9c7e31 #846a29;
   color: black;
+  transition: 0.3s ease-out;
+}
+.checkoutProduct__info > button:hover {
+  background: #ff3c00;
+  border-color: black;
+  padding: 5px;
+  color: white;
+  transform: scale(1.1);
 }
 .checkoutProduct__image {
   object-fit: contain;
