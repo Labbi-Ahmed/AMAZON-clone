@@ -3,6 +3,7 @@ import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { auth } from "../../firebase";
+import { textAlign } from "@mui/system";
 
 function Login() {
   const navigate = useNavigate();
@@ -28,10 +29,12 @@ function Login() {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((auth) => {
-        setEmail("");
-        setPassword("");
         console.log(auth);
-        if (auth) navigate("/");
+        if (auth) {
+          setEmail("");
+          setPassword("");
+          navigate("/");
+        }
       })
       .catch((error) => alert(error.message));
   };
@@ -66,6 +69,17 @@ function Login() {
             Sign In
           </button>
         </form>
+        <a
+          href="#"
+          style={{
+            textDecoration: "",
+            textAlign: "right",
+            marginTop: "5px",
+            fontSize: "12px",
+          }}
+        >
+          forgot password?
+        </a>
         <p>
           By signing-in you agree to Amazon's Conditions of use & Sale. Please
           see our privacy Notice, our Cookies Notice and out Interest-Based Ads
