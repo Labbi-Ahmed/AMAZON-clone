@@ -1,7 +1,6 @@
 const functions = require("firebase-functions");
 const express = require("express");
-const { queries } = require("@testing-library/react");
-const cors = require("cors")({ origin: true });
+const cors = require("cors");
 
 const stripe = require("stripe")(
   "sk_test_51M5sc4SGfnlOTh7YvDRzzSCTU9fuRSeXCCDdzCJivsqzQ5a5RZyc0Rf1cZAXhZ2lQjkMrBUpxWKTYutKReK2C56f00zW0Ys8JW"
@@ -13,25 +12,30 @@ const stripe = require("stripe")(
 const app = express();
 
 // MiddleWares
-app.use(cors);
+app.use(cors({ origin: true }));
 app.use(express.json());
 
 // API-routes
-app.get("/", (request, response) => response.status(200).send("hello world"));
+app.get("/", (request, response) =>
+  response
+    .status(200)
+    .send(`<p>This is my <strong>practice</strong> hahahah </p>`)
+);
 
 app.post("/payments/create", async (request, response) => {
   const total = request.query.total;
 
   console.log("payment request recieve BOOm!!!>>>>", total);
 
-  const paymentIntent = await stripe.paymentIntent.create({
+  const paymentIntent = await stripe.paymentIntents.create({
     amount: total,
     currency: "usd",
+    payment_method_types: ["card"],
   });
 
   // ok -- created
   response.status(201).send({
-    clientSecret: paymentIntent.clientSecret,
+    clientSecret: paymentIntent.client_secret,
   });
 });
 

@@ -1,5 +1,5 @@
 import { useElements, useStripe, CardElement } from "@stripe/react-stripe-js";
-import axios from "axios";
+import axios from "./axios";
 import React, { useEffect, useState } from "react";
 import CurrencyFormat from "react-currency-format";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,6 +7,7 @@ import { getBasketTotal } from "../../Reducer/Reducer";
 import { useStateValue } from "../../StateProvider/StateProvider";
 import CheckoutProduct from "../CheckoutProduct";
 import "./Payment.css";
+import { db } from "../../../firebase";
 
 function Payment() {
   const [{ basket, user }, dispatch] = useStateValue();
@@ -27,16 +28,15 @@ function Payment() {
     const getClientSecret = async () => {
       const response = await axios({
         method: "post",
-        // Stripe expects the total in a currencies subunites
         url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
       });
-      console.log("This is call>>>>>>", response.data.clientSecret);
+      // console.log(response.data);
       setClientSecret(response.data.clientSecret);
     };
     getClientSecret();
   }, [basket]);
 
-  console.log("the secret is >>>>", clientSecret);
+  console.log("Thi secret is>>>>", clientSecret);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,9 +50,25 @@ function Payment() {
       })
       .then(({ paymentIntent }) => {
         // paymentIntent = payment confirmation
+        // console.log("after this section get an error");
+
+        db.collection("users")
+          .doc(user?.uid)
+          .collection("orders")
+          .doc(paymentIntent.id)
+          .set({
+            basket: basket,
+            amount: paymentIntent.amount,
+            created: paymentIntent.created,
+          });
+
         setSucceeded(true);
         setError(null);
         setProcessing(false);
+
+        dispatch({
+          type: "EMPTY_BASKET",
+        });
 
         navigator("/orders");
       });
@@ -112,13 +128,7 @@ function Payment() {
                 <CurrencyFormat
                   renderText={(value) => (
                     <>
-                      {/* <p> */}
-                      {/* Sbutotal ({basket.length} item):{" "} */}
                       <h3>Order Total: {value}</h3>
-                      {/* </p> */}
-                      {/* <small className="subtotal__gift">
-                        <input type="checkbox" /> This order contains a gift
-                      </small> */}
                     </>
                   )}
                   decimalScal={2}
