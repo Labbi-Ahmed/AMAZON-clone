@@ -110,6 +110,7 @@ function Payment() {
                 image={item.image}
                 rating={item.rating}
                 price={item.price}
+                hideButton={false}
               />
             ))}
           </div>

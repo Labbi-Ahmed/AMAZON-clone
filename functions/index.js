@@ -3,24 +3,23 @@ const express = require("express");
 const cors = require("cors");
 
 const stripe = require("stripe")(
-  "sk_test_51M5sc4SGfnlOTh7YvDRzzSCTU9fuRSeXCCDdzCJivsqzQ5a5RZyc0Rf1cZAXhZ2lQjkMrBUpxWKTYutKReK2C56f00zW0Ys8JW"
+  "sk_test_51M6UvPDUmsjMck1Dvv4cYmNiRKhBgOz76IF7GRJdMmGyAoa9Vr7Mp3bahSMkfMnibm4rmuHSmFV1cKUPj8IK3N3B008QxSCk6W"
 );
 
-// API
+// api
 
-// App config
+// app config
 const app = express();
 
-// MiddleWares
+// middle wares
 app.use(cors({ origin: true }));
 app.use(express.json());
 
-// API-routes
-app.get("/", (request, response) =>
-  response
-    .status(200)
-    .send(`<p>This is my <strong>practice</strong> hahahah </p>`)
-);
+// api couters
+
+app.get("/", (request, response) => {
+  response.status(200).send(`<p> This is checking face </p>`);
+});
 
 app.post("/payments/create", async (request, response) => {
   const total = request.query.total;
@@ -39,9 +38,4 @@ app.post("/payments/create", async (request, response) => {
   });
 });
 
-// Listen command
-
 exports.api = functions.https.onRequest(app);
-
-// example endpoint api
-//http://127.0.0.1:5001/challenge-45921/us-central1/api

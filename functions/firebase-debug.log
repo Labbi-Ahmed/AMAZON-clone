@@ -78,6 +78,7 @@
     "firebase-functions-test": "^0.2.0"
   },
   "private": true
+<<<<<<< HEAD
 }
 [debug] [2022-11-20T17:57:15.862Z] Building nodejs source
 [debug] [2022-11-20T17:57:15.862Z] Analyzing nodejs backend spec
@@ -456,3 +457,9 @@ Issues? Report them at https://github.com/firebase/firebase-tools/issues and att
 [debug] [2022-11-20T18:06:53.639Z] [worker-us-central1-api-c568a3cb-8e70-4e78-8211-e932aec96374]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-c568a3cb-8e70-4e78-8211-e932aec96374]: IDLE"}}
 [debug] [2022-11-20T18:06:53.640Z] [work-queue] {"queueLength":0,"workRunningCount":0}
 [info] i  functions: Finished "api" in 456.9711ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"api\" in 456.9711ms"}}
+=======
+}
+[debug] [2022-11-19T21:01:26.758Z] Building nodejs source
+[debug] [2022-11-19T21:01:26.758Z] Analyzing nodejs backend spec
+[debug] [2022-11-19T21:01:26.759Z] Could not find functions.yaml. Must use http discovery
+>>>>>>> parent of 9ac092f... done the recovery
